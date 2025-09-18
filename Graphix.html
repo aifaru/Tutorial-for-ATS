@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>High-Class Graphix — Premium UI Template</title>
+  <meta name="description" content="A polished, single-file HTML + CSS premium landing page template with modern graphics and interaction." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-1: linear-gradient(135deg,#0f172a 0%, #0b1220 40%, #081026 100%);
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.04);
+      --accent: linear-gradient(90deg,#7b61ff,#00d4ff);
+      --card-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      --radius: 16px;
+      --max-width: 1200px;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg-1);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Layout container */
+    .wrap{
+      max-width:var(--max-width);
+      margin:40px auto;
+      padding:24px;
+    }
+
+    /* NAV */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:conic-gradient(from 200deg,#7b61ff,#00d4ff 55%, #4fe3c8 80%);
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#021025;box-shadow:0 6px 30px rgba(0,0,0,0.6);
+    }
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;font-size:12px;color:rgba(230,238,248,0.7)}
+
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:rgba(230,238,248,0.8);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    .nav-links a:hover{background:var(--glass-2)}
+
+    .cta{background:var(--accent);padding:10px 16px;border-radius:12px;font-weight:700;color:#031026;text-decoration:none}
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:36px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:36px;
+      box-shadow:var(--card-shadow);
+      backdrop-filter: blur(8px) saturate(120%);
+      position:relative;
+      overflow:hidden;
+    }
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;font-size:12px;margin-bottom:16px}
+    h2{font-size:34px;margin:0 0 12px}
+    p.lead{margin:0 0 22px;color:rgba(230,238,248,0.8)}
+
+    .features{display:flex;gap:14px;margin-top:6px}
+    .feature{flex:1;padding:14px;border-radius:12px;background:rgba(255,255,255,0.02);}
+    .feature h4{margin:0 0 6px}
+    .btn-row{display:flex;gap:12px;margin-top:18px}
+
+    /* Graphic panel */
+    .panel{
+      border-radius:var(--radius);
+      height:100%;
+      min-height:340px;
+      display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:18px;
+      background:radial-gradient(800px 400px at 10% 20%, rgba(123,97,255,0.08), transparent 8%), radial-gradient(800px 400px at 90% 80%, rgba(0,212,255,0.06), transparent 8%);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* Floating art */
+    .orb{position:absolute;border-radius:50%;filter:blur(20px);opacity:0.9}
+    .orb.one{width:320px;height:320px;background:linear-gradient(90deg,#7b61ff,#00d4ff);top:-60px;left:-60px}
+    .orb.two{width:220px;height:220px;background:linear-gradient(90deg,#ff7bd2,#7b61ff);bottom:-40px;right:-40px}
+
+    /* Cards */
+    .grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0;color:rgba(230,238,248,0.75)}
+
+    /* Showcase */
+    .showcase{margin-top:22px;display:flex;gap:12px;align-items:center}
+    .mock{flex:1;border-radius:12px;padding:18px;background:linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.3));border:1px solid rgba(255,255,255,0.02)}
+
+    /* Footer */
+    footer{margin-top:36px;text-align:center;color:rgba(230,238,248,0.6);font-size:13px}
+
+    /* Responsiveness */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .panel{min-height:260px}
+      .wrap{margin:20px auto;padding:18px}
+    }
+
+    /* Micro-interactions */
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none;font-weight:700}
+    .btn.primary{background:var(--accent);color:#031026}
+
+    a:focus{outline:2px solid rgba(255,255,255,0.06);outline-offset:2px}
+
+    /* Subtle animations */
+    .logo{transform:rotate(-6deg);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+    .brand:hover .logo{transform:rotate(0deg)}
+    .orb{animation:float 9s ease-in-out infinite}
+    .orb.two{animation-duration:12s}
+    @keyframes float{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(12deg)}100%{transform:translateY(0) rotate(0)}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#">
+        <div class="logo">G</div>
+        <div>
+          <h1>Graphix</h1>
+          <p>Premium UI & Design System</p>
+        </div>
+      </a>
+
+      <div class="nav-links" role="navigation">
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#pricing">Pricing</a>
+        <a class="cta" href="#contact">Get Started</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero-card hero">
+        <div>
+          <span class="kicker">Enterprise-grade visuals</span>
+          <h2>High-Class Graphix — Beautiful interfaces that convert</h2>
+          <p class="lead">Deliver premium digital experiences with a modern visual language — gradients, glassmorphism, and motion tuned for conversion and credibility.</p>
+
+          <div class="features">
+            <div class="feature">
+              <h4>Design System</h4>
+              <p>Tokens, components, patterns ready for production.</p>
+            </div>
+            <div class="feature">
+              <h4>Responsive</h4>
+              <p>Pixel-perfect behavior across mobile, tablet and desktop.</p>
+            </div>
+            <div class="feature">
+              <h4>Performance</h4>
+              <p>Lightweight markup and CSS-first animations.</p>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <a href="#" class="btn primary">Explore Templates</a>
+            <a href="#" class="btn">Request a Demo</a>
+          </div>
+
+          <div class="grid-cards" style="margin-top:26px">
+            <div class="card">
+              <h3>Component Library</h3>
+              <p>Buttons, cards, forms and micro-interactions with accessible defaults.</p>
+            </div>
+            <div class="card">
+              <h3>Brand Toolkit</h3>
+              <p>Color systems, iconography, and layout guidelines for consistency.</p>
+            </div>
+            <div class="card">
+              <h3>Developer Ready</h3>
+              <p>Semantic HTML and CSS variables to integrate with any stack.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel" aria-hidden="false">
+          <div class="orb one" aria-hidden="true"></div>
+          <div class="orb two" aria-hidden="true"></div>
+
+          <!-- Minimal illustrative SVG to communicate 'graphics' -->
+          <svg width="100%" height="100%" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet" style="position:relative;z-index:2">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#7b61ff" stop-opacity="0.95" />
+                <stop offset="1" stop-color="#00d4ff" stop-opacity="0.95" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(20,20)">
+              <rect x="0" y="0" width="560" height="320" rx="18" fill="url(#g1)" opacity="0.06"></rect>
+              <g transform="translate(40,40)">
+                <rect x="0" y="0" width="220" height="140" rx="12" fill="rgba(255,255,255,0.06)"></rect>
+                <rect x="240" y="0" width="140" height="80" rx="12" fill="rgba(255,255,255,0.04)"></rect>
+                <rect x="240" y="100" width="200" height="70" rx="12" fill="rgba(255,255,255,0.03)"></rect>
+
+                <circle cx="120" cy="210" r="40" fill="rgba(255,255,255,0.06)"></circle>
+
+                <!-- decorative lines -->
+                <path d="M0 160 L200 160" stroke="rgba(255,255,255,0.04)" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M0 180 L320 180" stroke="rgba(255,255,255,0.03)" stroke-width="2" stroke-linecap="round"></path>
+              </g>
+            </g>
+          </svg>
+        </aside>
+      </section>
+
+      <section id="showcase">
+        <div class="hero-card">
+          <h3 style="margin-top:0">Showcase</h3>
+          <p style="margin-bottom:12px;color:rgba(230,238,248,0.78)">Real-world components and layout examples for product teams.</p>
+
+          <div class="showcase">
+            <div class="mock">
+              <h4 style="margin:0 0 12px">Dashboard snapshot</h4>
+              <p style="margin:0 0 12px;color:rgba(230,238,248,0.7)">Cards, charts and metric summaries designed to prioritize content.</p>
+            </div>
+            <div class="mock">
+              <h4 style="margin:0 0 12px">Marketing hero</h4>
+              <p style="margin:0 0 12px;color:rgba(230,238,248,0.7)">High-converting hero pattern with split content and illustration.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="features" style="margin-top:18px">
+        <div class="hero-card">
+          <h3 style="margin-top:0">Why Graphix?</h3>
+          <p style="color:rgba(230,238,248,0.75)">An enterprise-oriented system that scales from prototypes to production.</p>
+
+          <div class="grid-cards">
+            <div class="card"><h3>Accessible by default</h3><p>Contrast, keyboard focus, and semantic markup considered.</p></div>
+            <div class="card"><h3>Design tokens</h3><p>Colors, spacing, and typography available as CSS variables for easy theming.</p></div>
+            <div class="card"><h3>Ready for animation</h3><p>Motion primitives and reduced-motion preferences supported.</p></div>
+            <div class="card"><h3>Well-documented</h3><p>Clear usage guidelines make onboarding fast for designers and devs.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" style="margin-top:18px">
+        <div class="hero-card">
+          <h3 style="margin-top:0">Pricing</h3>
+          <p style="color:rgba(230,238,248,0.75)">Flexible licensing for startups and enterprises.</p>
+
+          <div class="grid-cards">
+            <div class="card"><h3>Starter</h3><p>Essential components & templates — ideal for small teams.</p></div>
+            <div class="card"><h3>Pro</h3><p>Complete design system + priority support.</p></div>
+            <div class="card"><h3>Enterprise</h3><p>Custom integrations, dedicated onboarding, and SLA.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:18px">
+        <div class="hero-card">
+          <h3 style="margin-top:0">Contact & Next Steps</h3>
+          <p style="color:rgba(230,238,248,0.75)">Want a tailored version for your brand? Let's align on scope, timeline and deliverables.</p>
+
+          <form onsubmit="event.preventDefault();document.getElementById('sent').style.display='block'" style="display:grid;gap:12px;grid-template-columns:1fr 1fr;align-items:center">
+            <input placeholder="Full name" required style="grid-column:span 1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+            <input placeholder="Company email" required style="grid-column:span 1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+            <textarea placeholder="Tell us your project (brief)" required style="grid-column:span 2;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"></textarea>
+            <div style="grid-column:span 2;display:flex;gap:12px;align-items:center">
+              <button class="btn primary" type="submit">Request Proposal</button>
+              <span id="sent" style="display:none;color:rgba(126,255,210,0.9);font-weight:700">Request noted — we'll respond within business hours.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Graphix — Crafted with care for teams that require excellence.
+    </footer>
+  </div>
+
+  <script>
+    // Small runtime niceties
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.orb').forEach(o => o.style.animation = 'none');
+    }
+  </script>
+</body>
+</html>
